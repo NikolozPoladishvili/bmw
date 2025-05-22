@@ -1,5 +1,5 @@
 <?php
 session_start();
 session_destroy();
-header("Location: /bmw-project/index.php");
+header("Location: /bmw/index.php");
 exit;

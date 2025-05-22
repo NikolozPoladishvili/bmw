@@ -62,7 +62,7 @@ section.category h2 {
 
 .model-card img {
   width: 100%;
-  height: 180px;
+  height: auto;
   object-fit: cover;
 }
 
@@ -83,7 +83,9 @@ footer {
   margin-top: 50px;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="email"],
+input[type="password"]{
   padding: 10px;
   border: 2px solid;
   border-radius: 5px;

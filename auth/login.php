@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($user && password_verify($password, $user['password'])) {
     $_SESSION['user'] = $user['name'];
     $_SESSION['is_admin'] = $user['is_admin'];
-    header("Location: /bmw-project/index.php");
+    header("Location: /bmw/index.php");
     exit;
   } else {
     $error = "Invalid credentials";
@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php include '../includes/header.php'; ?>
 <h1>Login</h1>
-<link rel="stylesheet" href="/assets/css/style.css">
 <form method="POST" style="max-width:400px;margin:auto;">
   <input type="email" name="email" placeholder="Email" required><br><br>
   <input type="password" name="password" placeholder="Password" required><br><br>

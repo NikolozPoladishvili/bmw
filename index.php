@@ -22,7 +22,7 @@ $categories = $stmt->fetchAll();
       <div class="models">
         <?php foreach ($models as $model): ?>
           <div class="model-card">
-            <img src="assets/images/<?= htmlspecialchars($model['image']) ?>" alt="<?= htmlspecialchars($model['name']) ?>">
+            <img src="../assets/images/<?= htmlspecialchars($model['image']) ?>" alt="<?= htmlspecialchars($model['name']) ?>">
             <div class="details">
               <h3><?= htmlspecialchars($model['name']) ?></h3>
               <p><strong>Type:</strong> <?= htmlspecialchars($model['type']) ?></p>
