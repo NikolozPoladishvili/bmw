@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #f4f4f4;
+  background-image: url('/bmw/assets/images/gradient.jpg');
 }
 
 nav {
@@ -58,6 +58,12 @@ section.category h2 {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  display: flex;           
+  flex-direction: column;  
+  justify-content: center; 
+  align-items: center;     
+  text-align: center;      
+  padding: 20px;           
 }
 
 .model-card img {
@@ -115,4 +121,22 @@ input[type="password"]{
 
 .favorite-form {
   margin-top: 10px;
+}
+.btn {
+  background-color: #0a1f44;
+  color: white;
+  padding: 10px;
+  border: 1px solid silver;
+  display: block;
+  margin: 0 auto;
+
+}
+.btn:hover {
+  background-color: #13397c;
+}
+
+select {
+  padding: 10px;
+  margin: 10px;
+
 }

@@ -30,7 +30,7 @@ $models = $stmt->fetchAll();
 <h1>BMW Models Showcase</h1>
 
 <form method="GET" action="index.php" style="margin-bottom:20px;">
-  <input type="text" name="search" placeholder="Search by name or type" value="<?= htmlspecialchars($search) ?>">
+  <input style ="margin: 10px; width: auto;" type="text" name="search" placeholder="Search by name or type" value="<?= htmlspecialchars($search) ?>">
 
   <select name="sort">
     <option value="">Sort By</option>
@@ -40,7 +40,7 @@ $models = $stmt->fetchAll();
     <option value="year_desc" <?= $sort === 'year_desc' ? 'selected' : '' ?>>Year: Newest First</option>
   </select>
 
-  <button type="submit">Search</button>
+  <button class = "btn" type="submit">Search</button>
 </form>
 
 <div class="models">

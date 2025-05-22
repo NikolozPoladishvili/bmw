@@ -8,24 +8,24 @@ if (!isset($_SESSION['user']) || !is_array($_SESSION['user'])) {
 }
 
 $userId = $_SESSION['user']['id'];
+$userName = $_SESSION['user']['name'];
 
-$stmtUser = $conn->prepare("SELECT name, email FROM users WHERE id = ?");
-$stmtUser->execute([$userId]);
-$user = $stmtUser->fetch();
-
-$stmtFavCount = $conn->prepare("SELECT COUNT(*) FROM favorites WHERE user_id = ?");
-$stmtFavCount->execute([$userId]);
-$favCount = $stmtFavCount->fetchColumn();
-
-include 'includes/header.php';
+// Get count of favorites
+$stmtFav = $conn->prepare("SELECT COUNT(*) FROM favorites WHERE user_id = ?");
+$stmtFav->execute([$userId]);
+$favoritesCount = $stmtFav->fetchColumn();
 ?>
 
-<h1>Your Profile</h1>
-<p><strong>Name:</strong> <?= htmlspecialchars($user['name']) ?></p>
-<p><strong>Email:</strong> <?= htmlspecialchars($user['email']) ?></p>
-<p><strong>Favorites count:</strong> <?= $favCount ?></p>
-
-<a href="/bmw/favorites.php">View your favorite models</a><br><br>
-<a href="/bmw/auth/logout.php">Logout</a>
-
-<?php include 'includes/footer.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Profile</title>
+  <link rel="stylesheet" href="/bmw/assets/css/style.css" />
+</head>
+<body>
+  <h1>Welcome, <?= htmlspecialchars($userName) ?></h1>
+  <p>Your favorites count: <?= $favoritesCount ?></p>
+  <p><a href="/bmw/index.php">Back to Home</a></p>
+</body>
+</html>
