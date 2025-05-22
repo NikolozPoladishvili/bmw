@@ -22,12 +22,20 @@ $categories = $stmt->fetchAll();
       <div class="models">
         <?php foreach ($models as $model): ?>
           <div class="model-card">
-            <img src="../assets/images/<?= htmlspecialchars($model['image']) ?>" alt="<?= htmlspecialchars($model['name']) ?>">
+            <img src="./assets/images/<?= htmlspecialchars($model['image']) ?>" alt="<?= htmlspecialchars($model['name']) ?>">
             <div class="details">
               <h3><?= htmlspecialchars($model['name']) ?></h3>
               <p><strong>Type:</strong> <?= htmlspecialchars($model['type']) ?></p>
               <p><strong>Year:</strong> <?= $model['year'] ?></p>
               <p><strong>Price:</strong> $<?= number_format($model['price'], 2) ?></p>
+              <?php if (isset($_SESSION['user'])): ?>
+                    <form method="POST" action="favorite.php" class="favorite-form">
+                        <input type="hidden" name="model_id" value="<?= $model['id'] ?>">
+                        <button type="submit">❤️ Favorite</button>
+                    </form>
+                <?php else: ?>
+                    <p><a href=" /bmw/auth/login.php">Login to favorite</a></p>
+                <?php endif; ?>
             </div>
           </div>
         <?php endforeach; ?>

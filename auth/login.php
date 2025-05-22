@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $user = $stmt->fetch();
 
   if ($user && password_verify($password, $user['password'])) {
-    $_SESSION['user'] = $user['name'];
+    $_SESSION['user'] = $user; 
     $_SESSION['is_admin'] = $user['is_admin'];
     header("Location: /bmw/index.php");
     exit;

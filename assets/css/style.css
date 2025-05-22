@@ -93,3 +93,6 @@ input[type="password"]{
   width: 100%;
   box-sizing: border-box;
 }
+.welcome-user {
+  color: white;
+}
