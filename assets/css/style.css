@@ -80,7 +80,7 @@ footer {
   color: white;
   text-align: center;
   padding: 20px;
-  margin-top: 50px;
+  margin-top:50px;
 }
 
 input[type="text"],
@@ -95,4 +95,24 @@ input[type="password"]{
 }
 .welcome-user {
   color: white;
+}
+
+.favorite-btn {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.favorite-btn:hover {
+  background-color: #0056b3;
+}
+
+.favorite-form {
+  margin-top: 10px;
 }

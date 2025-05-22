@@ -12,27 +12,27 @@ require_once __DIR__ . '/../config/db.php'; // Adjust path if needed
   <link rel="stylesheet" href="/bmw/assets/css/style.css">
 </head>
 <body>
-<nav>
+<nav style="display: flex; align-items: center; gap: 20px; padding: 10px;">
+  <a href="/bmw/index.php">
+    <img src="/bmw/assets/images/bmw-logo.png" alt="BMW Logo" style="height: 40px;">
+  </a>
   <a href="/bmw/index.php">Home</a>
-
   <?php if (isset($_SESSION['user']) && is_array($_SESSION['user'])): ?>
+    <?php
+      $userId = $_SESSION['user']['id'];
+      require_once __DIR__ . '/../config/db.php';
+      $stmt = $conn->prepare("SELECT COUNT(*) FROM favorites WHERE user_id = ?");
+      $stmt->execute([$userId]);
+      $favCount = $stmt->fetchColumn();
+    ?>
+    <a href="/bmw/favorites.php">Favorites (<?= $favCount ?>)</a>
     <?php if ($_SESSION['is_admin']): ?>
       <a href="/bmw/admin/dashboard.php">Admin</a>
     <?php endif; ?>
-
-    <?php
-    // Fetch favorites count for logged-in user
-    $userId = $_SESSION['user']['id'];
-    $stmtFavCount = $conn->prepare("SELECT COUNT(*) FROM favorites WHERE user_id = ?");
-    $stmtFavCount->execute([$userId]);
-    $favCount = $stmtFavCount->fetchColumn();
-    ?>
-
-    <a href="/bmw/favorites.php">Favorites (<?= $favCount ?>)</a>
     <a href="/bmw/auth/logout.php">Logout</a>
-
   <?php else: ?>
     <a href="/bmw/auth/login.php">Login</a>
     <a href="/bmw/auth/register.php">Register</a>
   <?php endif; ?>
 </nav>
+
